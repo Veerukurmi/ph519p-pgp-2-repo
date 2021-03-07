@@ -17,11 +17,19 @@ psi = np.array(df_txt.iloc[0:grid,1])
 x = np.array(df_txt.iloc[0:grid,0])
 
 
-plt.figure(figsize=(8,5), dpi=100)
+plt.figure(figsize=(8,5), dpi=300)
 plt.plot(x,psi)
 plt.xlabel('x-position')
-plt.ylabel('Wave Function')
+plt.ylabel(r'$\psi(r)$')
 plt.grid()
-plt.title("Second Excited State for Harmonic Oscillator")
-plt.show()
-plt.savefig('second_excited_State.png', dpi=300)
+plt.title("Wavefunction's radial part only")
+plt.text(1,0.2, r'step size $(n) = 100000$')
+plt.savefig('wave_check.png', dpi=300)
+
+# Saving the csv file for matlab computation
+# Creating a dictionary to save data
+dict_1 = {'x':x,'psi':psi}
+df_1 = pd.DataFrame(dict_1)
+
+# Saving the csv file
+#df_1.to_csv('wavefunction.csv')
