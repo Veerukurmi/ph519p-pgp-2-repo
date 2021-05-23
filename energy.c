@@ -4,7 +4,7 @@
 
 int main()
 {
-    double E, E_beg=0.05, E_end=0.5, n=50, delta_E;
+    double E, E_beg=0.05, E_end=0.55, n=50, delta_E;
 
     delta_E = (E_end - E_beg)/n;
 

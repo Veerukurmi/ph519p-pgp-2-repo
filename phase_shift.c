@@ -21,8 +21,8 @@ void main()
     printf("Enter the l value of the effective Potential (Integer only, Usually 0 to 6): ");
     scanf("%d",&l);
 
-    grid = 3000;
-    x_beg = 1;  // Begining of spataial coordinates
+    grid = 5000;
+    x_beg = 1.0;  // Begining of spataial coordinates
     // x_end = 30; // End of spatial coordiantes
     // delta_h = (x_end-x_beg)/grid;
 
@@ -30,8 +30,12 @@ void main()
 
     // n_energy will store total Energy data points
 
-    n_energy = read_file_line("energy.dat");
-    // printf("%d\n",n_energy);
+    n_energy = read_file_line("energy.dat"); // 50;
+
+    // double delta_E = (0.55-0.05)/50;
+
+
+    printf("%d\n",n_energy);
 
     double delta_h[n_energy];
     
@@ -43,10 +47,12 @@ void main()
 
     for (j=0;j<n_energy;j++)
     {
+        // E[j] = 0.05 + j*delta_E;
         fscanf(fp, "%lf", &E[j]);
+        //printf("%d", j);
     }
 
-    fclose(fp);
+    //fclose(fp);
 
     double ind_inc[n_energy], tan_del[n_energy], ph_sh[n_energy];
     double k[n_energy], K[n_energy], inc[n_energy];
@@ -71,8 +77,6 @@ void main()
 
     // Loop 1
 
-    //  FILE *fp2 = fopen("check_var_y.txt","w");
-
     for (i=0;i<n_energy;i++)
     {
         x[0][i] = x_beg;
@@ -82,7 +86,7 @@ void main()
     {   
         k[j] = pow((2*m_e*E[j]),0.5);
         inc[j] = (M_PI)/k[j];
-        x_end = 5.8 + 1.9 + 16 + inc[j];
+        x_end = 20 + inc[j];
         delta_h[j] = (x_end-x_beg)/grid;
         ind_inc[j] = inc[j]/delta_h[j];
 
@@ -94,7 +98,7 @@ void main()
                 y[i][j] = 1 - (pow(delta_h[j],2))/(12)*f[i][j];
                 x[i+1][j] = x[i][j] + delta_h[j];
                 // V[i][j] = -0.302;
-                // fprintf(fp2,"%lf\n", x[i]);
+                // printf("%lf\n", x[i][j]);
             }
             else
             {
@@ -102,12 +106,10 @@ void main()
                 y[i][j] = 1 - (pow(delta_h[j],2))/(12)*f[i][j];
                 x[i+1][j] = x[i][j] + delta_h[j];
                 // V[i][j] = 0;
-                // fprintf(fp2, "%lf\n", x[i]);
+                // printf("%lf\n", x[i][j]);
             } 
         }
-        // fprintf(fp2, "----------\n");
     }
-    // fclose(fp2);
 
     for (j=0; j<n_energy;j++)
     {
@@ -125,9 +127,9 @@ void main()
     }
 
     for (i=0;i<n_energy;i++)
-    {
-        x[0][i] = x_beg;
-    }
+     {
+         x[0][i] = x_beg;
+     }
 
     FILE *fp1 = fopen("wave_data.txt", "w");
 
@@ -135,7 +137,7 @@ void main()
 
     for(i=0;i<grid;i++)
     {
-        fprintf(fp1, "%lf %0.6lf\n",x[i][41], u_wave[i][41]);
+        fprintf(fp1, "%lf %0.6lf\n",x[i][45], u_wave[i][45]);
     }
 
     fclose(fp1);
@@ -151,7 +153,7 @@ void main()
         for (i=0;i<grid;i++)
         {
             // printf("%d\n", z++);
-            if(7.8<=x[i][j] && x[i][j]<=7.85)
+            if(7.0<=x[i][j] && x[i][j]<=7.05)
             {
                 r1 = i;
                 // printf("%d\n", r1); 
@@ -159,14 +161,14 @@ void main()
              }
          }
         r2 = r1 + (int)ind_inc[j];
-        printf("%d\n", r2);
+        // printf("%d\n", r2);
         K[j] = (x[r1][j]*u_wave[r2][j])/(x[r2][j]*u_wave[r1][j]);
         tan_del[j] = (K[j]*jl(l,k[j]*x[r1][j]) - jl(l,k[j]*x[r2][j])/(K[j]*nl(l,k[j]*x[r1][j]) - nl(l,k[j]*x[r2][j])));
         ph_sh[j] = atan(tan_del[j]);
-        //if (ph_sh[j]<0)
-        //{
-            //ph_sh[j] = ph_sh[j] + M_PI;
-        //}
+        if (ph_sh[j]<0)
+        {
+            ph_sh[j] = ph_sh[j] + M_PI;
+        }
         fprintf(fp2, "%lf %lf\n", E[j], ph_sh[j]);
     }
     fclose(fp2);

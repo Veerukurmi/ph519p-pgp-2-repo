@@ -1,5 +1,4 @@
 // This function runs differentiation 
-// For now output of this file can be saved directly using "./a.out > diff.txt" 
 
 #include<math.h>
 #include<stdlib.h>
@@ -30,7 +29,7 @@ int main()
     // Diffrentiating using Euler's Method
     FILE *fp1 = fopen("time_delay.txt","w");
 
-    for (i=0;i<(n-1);i++)
+    for (i=0;i<(n-2);i++)
     {
         d_f[i] = 2*(f[i+1]-f[i])/h;
         fprintf(fp1,"%lf %lf\n", x[i], d_f[i]);

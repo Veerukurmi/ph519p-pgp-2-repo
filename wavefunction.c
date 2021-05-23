@@ -21,7 +21,7 @@ void main()
 
     grid = 3000;
     E = 0.5;    // Energy of the system in Atomic Units      
-    x_beg = 1e-9;  // Begining of spataial coordinates
+    x_beg = 1;  // Begining of spataial coordinates
     x_end = 30; // End of spatial coordiantes
     delta_h = (x_end-x_beg)/grid;
 
@@ -67,6 +67,10 @@ void main()
     }
 
     FILE *fp1 = fopen("wave_data.txt", "w");
+    
+    // This is aadded to the code because x[0] 
+    // filled with some garbage value while printing 
+    x[0] = x_beg;
 
     for(i=0;i<grid;i++)
     {
