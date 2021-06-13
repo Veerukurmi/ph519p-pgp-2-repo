@@ -34,9 +34,9 @@ set ytics nomirror
 set ylabel "Time delay (a.u.)" font "Times-Roman,18"
 set y2label "Phase-Shift in radians" font "Times-Roman,18"
 
-set xrange[0.01:0.55]
-set yrange[-45:19]
-set y2range[0:1.5]
+#set xrange[0.01:0.55]
+#set yrange[-45:19]
+#set y2range[0:1.5]
 
 #set label 1 "Phase-Shift (radians)" at screen 0.05,1 center front rotate font "Times-Roman,24"
 #set label 2 "Na_{20}" font "Times-Roman,26" at 7,100 center
@@ -46,7 +46,7 @@ set y2range[0:1.5]
 
 
 
-set key at graph .45, 0.55 spacing 1.5 font "Times-Roman, 20"
+set key at graph .3, 0.95 spacing 1.5 font "Times-Roman, 12"
 set key box width -0.4
 set key box lt -1 lw 2
 set title "Plot for l=6"

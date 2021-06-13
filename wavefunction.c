@@ -1,6 +1,9 @@
 // This program prints the wavefunction for the given potential.
 
 // Numerov's Method is used to solve the Schrodinger's Equation.
+ 
+// Code by Apoorav Singh Deo
+// Github: https://github.com/apoorav-singh
 
 #include<stdio.h>
 #include<stdlib.h>

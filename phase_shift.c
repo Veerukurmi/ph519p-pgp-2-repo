@@ -1,12 +1,15 @@
-// Phase-Shift 
-
+// This program is used for calculation of the phase-shift 
+// Code by Apoorav Singh Deo
+// Github: https://github.com/apoorav-singh
 
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
 
 #include "line_counting.c"
+// For counting the number of data points
 #include "bessel_1_2.c"
+// Importing the bessel's function 
 
 void main()
 {
@@ -49,7 +52,7 @@ void main()
     {
         // E[j] = 0.05 + j*delta_E;
         fscanf(fp, "%lf", &E[j]);
-        //printf("%d", j);
+        // printf("%lf", E[j]);
     }
 
     //fclose(fp);

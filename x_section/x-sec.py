@@ -1,3 +1,10 @@
+# This program is used for calculation of the phase-shift 
+# Code by Apoorav Singh Deo
+# Github: https://github.com/apoorav-singh
+
+
+
+
 # Importing pandas to export data from text file 
 # Importing Matplotlib.pyplot to draw graphs
 # Importing numpy to to make faster array like structure to store data
@@ -58,7 +65,7 @@ X = [0]*(grid)
 j=0
 while j<(grid-1):
     #X[j] = ((4*(22/7))/k[j]**2)*(1*(math.sin(phi_0[j]))**2 + 3*(math.sin(phi_1[j]))**2 + 5*(math.sin(phi_2[j]))**2 + 7*(math.sin(phi_3[j]))**2 + 9*(math.sin(phi_4[j]))**2 + 11*(math.sin(phi_5[j]))**2 + 13*(math.sin(phi_6[j]))**2 + 15*(math.sin(phi_7[j]))**2)
-    X[j] = ((4*(22/7))/k[j]**2)*(13*(math.sin(phi_6[j]))**2)
+    X[j] = ((4*(22/7))/k[j]**2)*(15*(math.sin(phi_7[j]))**2)
     #print(X[j])
     j+=1
 
@@ -67,7 +74,7 @@ plt.figure(figsize=(8,5), dpi=300)
 plt.plot(E[0:(grid-1)],X[0:(grid-1)],"b->")
 #plt.plot(E_lit,X_lit,"r->")
 #plt.legend(["Computed Value","Literature Value"])
-plt.legend(["l=6"])
+plt.legend(["l=7"])
 plt.xlabel('E (a.u.)')
 #plt.ylabel(r'$\delta_l$')
 plt.ylabel("Cross-section (a.u.)")
@@ -75,7 +82,7 @@ plt.grid()
 plt.title("Cross-Section")
 plt.show()
 #plt.text(1,0.2, r'step size $(n) = 100000$')
-plt.savefig('x-sec.png', dpi=300)
+plt.savefig('x-sec_7.png', dpi=300)
 
 # Saving the csv file for matlab computation
 # Creating a dictionary to save data
@@ -83,4 +90,4 @@ dict_1 = {'x':E[0:(grid-1)],'psi':X[0:(grid-1)]}
 df_1 = pd.DataFrame(dict_1)
 
 # Saving the csv file
-df_1.to_csv('cross_section.csv')
+df_1.to_csv('cross_section_7.csv')

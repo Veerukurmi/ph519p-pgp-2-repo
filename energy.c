@@ -1,6 +1,14 @@
+// Code by Apoorav Singh Deo
+// Github: https://github.com/apoorav-singh
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
+// This module feeds the energy values to the program "phase_shift.c"
+
+// This code can be integrated with the main code if needed
+
+
 
 int main()
 {
