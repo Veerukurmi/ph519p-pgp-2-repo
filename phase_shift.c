@@ -9,7 +9,7 @@
 #include "line_counting.c"
 // For counting the number of data points
 #include "bessel_1_2.c"
-// Importing the bessel's function 
+// Importing bessel's function 
 
 void main()
 {
