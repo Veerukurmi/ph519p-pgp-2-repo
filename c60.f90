@@ -32,6 +32,7 @@ real(dp):: rmax1,rmax2, xmin, xmax
 integer :: j, n
 !eup is maximum energy, elw is lower energy, and de is energy step size
 real(dp):: eup, elw, de
+character (len=80) :: fileout
  del=1.9_dp	
  r0=5.8_dp
  xmin=1.0_dp     
@@ -49,6 +50,11 @@ real(dp):: eup, elw, de
  allocate(r(0:mesh),u(0:mesh),f(0:mesh),Uo(0:mesh))
  
  n=nint((eup-elw)/de)+1    
+ 
+ !for output file name 
+print*, "enter the name of file:"
+read (*,*) fileout
+
 ! do loop for energy is changing in every interation and corresponding cross section value we are getting 	
 do j =1, n
     
@@ -116,9 +122,8 @@ do j =1, n
 			phaseshift = atan(tandelta)  
 		
     !to get the data of phase shift at different energy values
-              open(18, file='phaseshift.dat')
-	             write(18,*) energy*Ht, phaseshift       
-
+ 	       open (18,file=fileout, status='unknown', form='formatted')
+	             write(18,*) energy*Ht, phaseshift      
 			
  
  end do
