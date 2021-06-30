@@ -1,6 +1,6 @@
-! Aim:To find out the sigma section  for sthe potential(C60@C540)
+! Aim:To find out the phase shift for the potential (C60@C540)
 ! for calculated parameters C60@C540 , Uo1=-0.302 Uo2=-0.404
- !All the calculationn is done in atomic units (a.u.)
+ !All the calculations are done in atomic units (a.u.)
 ! 1 Hartree= 27.2114 eV
 ! 2m/hbra^2=alpha=2.0
 ! hbar=1, m=1, c=1 (in atomic units)
