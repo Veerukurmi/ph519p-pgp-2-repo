@@ -1,4 +1,4 @@
-! Aim:To find out the cross section  for C540 fullerene
+! Aim:To find out the phase shift  for C540 fullerene without polarization
  !All the calculation is done in atomic units (a.u.)
 ! 1 Hartree= 27.2114 eV
 ! 2m/hbra^2=alpha=2.0 hbar=1, m=1, c=1 (in atomic units)
